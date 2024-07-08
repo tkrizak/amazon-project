@@ -16,6 +16,8 @@ export const deliveryOptions = [
   },
 ];
 
+//
+
 export function getDeliveryOption(deliveryOptionId) {
   let deliveryOption;
 
@@ -26,4 +28,18 @@ export function getDeliveryOption(deliveryOptionId) {
   });
 
   return deliveryOption || deliveryOption[0];
+}
+
+//
+
+export function validDeliveryOption(deliveryOptionId) {
+  let found = false;
+
+  deliveryOptions.forEach((option) => {
+    if (option.id === deliveryOptionId) {
+      found = true;
+    }
+  });
+
+  return found;
 }
