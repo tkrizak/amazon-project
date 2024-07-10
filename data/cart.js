@@ -89,5 +89,3 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
   saveToStorage();
 }
-
-console.log(cart);
