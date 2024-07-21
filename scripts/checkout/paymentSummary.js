@@ -90,4 +90,27 @@ export function renderPaymentSummary() {
 
       window.location.href = 'orders.html';
     });
+
+  /* const ordersTest = [];
+
+  document
+    .querySelector('.js-place-order-button')
+    .addEventListener('click', () => {
+      const order = {
+        orderId: 12345,
+        totalCostCents: totalCents,
+        products: [],
+      };
+
+      cart.forEach((cartItem) => {
+        order.products.push({
+          productId: cartItem.productId,
+          quantity: cartItem.quantity,
+        });
+      });
+
+      ordersTest.push(order);
+
+      console.log(ordersTest);
+    }); */
 }
