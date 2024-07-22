@@ -1,8 +1,9 @@
-import { cart, addToCart } from '../data/cart.js';
+import { cart, addToCart, renderCartQuantity } from '../data/cart.js';
 import { products, loadProducts } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 loadProducts(renderProductsGrid);
+renderCartQuantity();
 
 // generate html for products in array
 

@@ -66,6 +66,18 @@ export function removeFromCart(productId) {
   saveToStorage();
 }
 
+// renders cart Quantity in header
+
+export function renderCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+  });
+}
+
 //
 
 export function updateDeliveryOption(productId, deliveryOptionId) {

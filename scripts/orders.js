@@ -1,3 +1,4 @@
+import { addToCart, cart, renderCartQuantity } from '../data/cart.js';
 import { orders } from '../data/orders.js';
 import { getProduct, loadProductsFetch } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
@@ -60,7 +61,9 @@ async function loadOrders() {
               <div class="product-quantity">Quantity: ${
                 productDetails.quantity
               }</div>
-              <button class="buy-again-button button-primary">
+              <button class="buy-again-button js-buy-again-button button-primary" data-product-id="${
+                product.id
+              }">
                 <img class="buy-again-icon" src="images/icons/buy-again.png" />
                 <span class="buy-again-message">Buy it again</span>
               </button>
@@ -82,6 +85,26 @@ async function loadOrders() {
   }
 
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+
+  document.querySelectorAll('.js-buy-again-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      addToCart(button.dataset.productId);
+
+      renderCartQuantity();
+
+      console.log(cart);
+
+      button.innerHTML = 'Added';
+
+      setTimeout(() => {
+        button.innerHTML = `
+        <img class="buy-again-icon" src="images/icons/buy-again.png" />
+                <span class="buy-again-message">Buy it again</span>
+        `;
+      }, 1000);
+    });
+  });
 }
 
+renderCartQuantity();
 loadOrders();
