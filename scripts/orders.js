@@ -4,6 +4,8 @@ import { getProduct, loadProductsFetch } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
+renderCartQuantity();
+
 console.log(orders);
 
 async function loadOrders() {
@@ -37,7 +39,10 @@ async function loadOrders() {
           <div class="order-details-grid">
           ${productsListHTML(order)}
         </div>
+        </div>
     `;
+
+    console.log(ordersHTML);
   });
 
   function productsListHTML(order) {
@@ -106,5 +111,4 @@ async function loadOrders() {
   });
 }
 
-renderCartQuantity();
 loadOrders();
