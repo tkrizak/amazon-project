@@ -17,6 +17,7 @@ class Product {
   name;
   rating;
   priceCents;
+  keywords;
 
   constructor(productDetails) {
     this.id = productDetails.id;
@@ -24,6 +25,7 @@ class Product {
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.keywords = productDetails.keywords;
   }
 
   getStarsUrl() {
@@ -133,6 +135,38 @@ export function loadProducts(fun) {
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
+}
+
+//
+
+export function filterProducts(products, search) {
+  search = search.toLowerCase();
+
+  return products.filter((product) => {
+    const name = product.name.toLowerCase();
+    const keywords = product.keywords.map((keyword) => {
+      return keyword.toLowerCase();
+    });
+
+    return name.includes(search) || keywords.includes(search);
+  });
+}
+
+//
+
+export function searchProducts() {
+  const searchButton = document.querySelector('.js-search-button');
+  const searchInput = document.querySelector('.js-search-bar');
+
+  searchButton.addEventListener('click', () => {
+    window.location.href = `index.html?search=${searchInput.value}`;
+  });
+
+  searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      window.location.href = `index.html?search=${searchInput.value}`;
+    }
+  });
 }
 
 /* export const products = [
